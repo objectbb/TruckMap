@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Dimensions, View, Text, TextInput, StyleSheet, ScrollView } from 'react-native';
+import { Dimensions, View, Text, TextInput, StyleSheet, ScrollView, TouchableHighlight } from 'react-native';
 
 class PersonSearch extends Component {
     constructor(props) {
@@ -20,10 +20,13 @@ class PersonSearch extends Component {
                 (text) => this.changeSearchText(text) }
                 value = { this.state.searchText }
             />
-            <ScrollView>
+            <ScrollView style={styles.scrollview}>
             {
                 this.props.people(this.state.searchText).map((item,index) => (
-               <Text key={index}>{item.name.first} {item.name.last}</Text>
+                    <TouchableHighlight key={index} style={styles.personSearch}
+                    onPress={() => this.props.addPersontoMap(item)} >
+                        <Text key={index} >{item.name.first} {item.name.last}</Text>
+                    </TouchableHighlight>
               ))
             }
            </ScrollView>
@@ -49,6 +52,13 @@ const styles = StyleSheet.create({
         backgroundColor: '#d2d7d3',
         padding: 5,
         margin: 5
+    },
+    personSearch: {
+        margin: 10,
+        height: 15
+    },
+    scrollview: {
+        height: '20%'
     }
 
 });

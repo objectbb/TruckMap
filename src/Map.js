@@ -8,25 +8,21 @@ class Map extends Component {
         super(props);
     }
 
-
     render() {
         return (
 
             <MapView
               provider={this.props.provider}
-              initialRegion={this.props.region}
+              region={this.props.region}
               style={styles.map}
               scrollEnabled={true}
               zoomEnabled={true}
               pitchEnabled={false}
               rotateEnabled={false}
             >
-             {this.props.markers().map(item => (
-                <MapMarker
-                key={item.key}
-                  marker={item}
+              <MapMarker
+                  marker={this.props.marker}
                 />
-              ))}
             </MapView>
 
         );

@@ -12,39 +12,25 @@ class ContainerMap extends Component {
         this.state = {
             people: [],
             interests: [],
-            markers: [{
-                    key: 1,
-                    coords: { latitude: 41.8827779, longitude: -87.6849345 },
-                    title: "2323 W. Washington Unit:2",
-                    description: "2323 W. Washington Unit:2"
-                },
-                {
-                    key: 2,
-                    coords: { latitude: 41.8774014, longitude: -87.6900847 },
-                    title: "323 N Western #3",
-                    description: "323 N Western #3"
-                },
-                {
-                    key: 3,
-                    coords: { latitude: 41.9240041, longitude: -87.6875425 },
-                    title: "2323 N Western 2C",
-                    description: "2323 N Western 2C"
-                }
-            ]
+            marker: {
+                coords: { latitude: 41.8827779, longitude: -87.6849345 },
+                title: "2323 W. Washington Unit:2",
+                description: "2323 W. Washington Unit:2"
+            }
         }
 
         this.setLocation = this.setLocation.bind(this);
-        this.currMarkers = this.currMarkers.bind(this);
         this.randomCoords = this.randomCoords.bind(this);
         this.addPersontoMap = this.addPersontoMap.bind(this);
         this.peopleSearch = this.peopleSearch.bind(this);
+        this.updateCoords = this.updateCoords.bind(this);
     }
 
     componentWillMount() {
         this.setLocation(41.8827779, -87.6849345)
     }
 
-    setLocation(latitude, longtitude) {
+    setLocation(latitude, longitude) {
 
         let { width, height } = Dimensions.get('window');
         let LATITUDEDELTA = 0.1022
@@ -52,21 +38,27 @@ class ContainerMap extends Component {
         this.setState({
             region: {
                 latitude: latitude,
-                longitude: longtitude,
+                longitude: longitude,
                 latitudeDelta: LATITUDEDELTA,
                 longitudeDelta: LATITUDEDELTA * (width / height),
             }
         });
     }
 
-    currMarkers() {
-        return this.state.markers.filter((item) => item.coords);
-    }
 
     addPersontoMap(item) {
-        updateCoords(item)
-        item.geocodeInfo = getGeocodeInfo(item);
-        setLocation(item.coords.latitude, item.coords.longtitude)
+        this.updateCoords(item)
+        item.geocodeInfo = this.getGeocodeInfo(item);
+        this.setLocation(item.coords.latitude, item.coords.longitude)
+
+        this.setState({
+            marker: {
+                coords: item.coords,
+                title: item.name.first + ' ' + item.name.last,
+                description: this.email
+            }
+        })
+
     }
 
     peopleSearch(searchText) {
@@ -80,12 +72,15 @@ class ContainerMap extends Component {
             ) : []
     }
 
-    randomCoords() {
+    randomCoords(to, from, fixed) {
         return (Math.random() * (to - from) + from).toFixed(fixed) * 1;
     }
 
     updateCoords(item) {
-        item.coords = { latitude: this.randomCoords, longitude: this.randomCoords }
+        item.coords = {
+            latitude: this.randomCoords(48, 46, 7),
+            longitude: this.randomCoords(-88, -86, 7)
+        }
     }
 
     getGeocodeInfo(item) {
@@ -95,7 +90,7 @@ class ContainerMap extends Component {
     render() {
         return (
             <View style={styles.container}>
-              <Map region={this.state.region} markers={this.currMarkers}/>
+              <Map region={this.state.region} marker={this.state.marker}/>
                <PersonSearch people={this.peopleSearch} addPersontoMap={this.addPersontoMap} />
             </View>
         );
