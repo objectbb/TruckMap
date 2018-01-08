@@ -4,6 +4,7 @@ import { StyleSheet, Dimensions, View, TextInput } from 'react-native';
 import Map from './Map';
 import PersonSearch from './PersonSearch';
 import { connect } from "react-redux"
+import {styles} from './styles';
 
 class ContainerMap extends Component {
     constructor(props) {
@@ -12,11 +13,7 @@ class ContainerMap extends Component {
         this.state = {
             people: [],
             interests: [],
-            marker: {
-                coords: { latitude: 41.8827779, longitude: -87.6849345 },
-                title: "2323 W. Washington Unit:2",
-                description: "2323 W. Washington Unit:2"
-            }
+            marker: null
         }
 
         this.setLocation = this.setLocation.bind(this);
@@ -78,8 +75,8 @@ class ContainerMap extends Component {
 
     updateCoords(item) {
         item.coords = {
-            latitude: this.randomCoords(48, 46, 7),
-            longitude: this.randomCoords(-88, -86, 7)
+            latitude: this.randomCoords(-90, 90, 7),
+            longitude: this.randomCoords(-180, 180, 7)
         }
     }
 
@@ -89,7 +86,7 @@ class ContainerMap extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
+            <View style={styles.containermap_container}>
               <Map region={this.state.region} marker={this.state.marker}/>
                <PersonSearch people={this.peopleSearch} addPersontoMap={this.addPersontoMap} />
             </View>
@@ -97,13 +94,6 @@ class ContainerMap extends Component {
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        ...StyleSheet.absoluteFillObject,
-        flexDirection: "column",
-        flex: 1
-    },
-});
 
 function mapStateToProps(state) {
     const { people, interests } = state

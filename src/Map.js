@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, Dimensions, ScrollView } from 'react-native';
 import MapView from 'react-native-maps';
 import MapMarker from './MapMarker';
+import {styles} from './styles';
 
 class Map extends Component {
     constructor(props) {
@@ -20,21 +21,13 @@ class Map extends Component {
               pitchEnabled={false}
               rotateEnabled={false}
             >
-              <MapMarker
+             {this.props.marker && <MapMarker
                   marker={this.props.marker}
-                />
+                />}
             </MapView>
 
         );
     }
 }
-
-
-const styles = StyleSheet.create({
-    map: {
-        ...StyleSheet.absoluteFillObject
-    },
-});
-
 
 export default Map;

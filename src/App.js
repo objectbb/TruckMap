@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux"
-import {
-    StyleSheet,
-    View
-} from 'react-native';
+import { StyleSheet, View} from 'react-native';
+import {styles} from './styles';
 
 import {
     loadInterests,
@@ -23,7 +21,7 @@ class App extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
+            <View style={styles.app_container}>
             <ContainerMap />
           </View>
         );
@@ -33,14 +31,5 @@ class App extends Component {
 App.propTypes = {
     dispatch: PropTypes.func.isRequired
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
-    },
-});
 
 export default connect(null)(App)

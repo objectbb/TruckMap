@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Dimensions, View, Text, TextInput, StyleSheet, ScrollView, TouchableHighlight } from 'react-native';
+import { styles } from './styles';
 
 class PersonSearch extends Component {
     constructor(props) {
@@ -14,53 +15,27 @@ class PersonSearch extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
-            < TextInput style = {styles.searchText}
+            <View style={styles.personsearch_container}>
+            < TextInput style = {styles.personsearch_searchtext}
                 onChangeText = {
                 (text) => this.changeSearchText(text) }
                 value = { this.state.searchText }
             />
-            <ScrollView style={styles.scrollview}>
+            <ScrollView style={styles.personsearch_scrollview}>
             {
                 this.props.people(this.state.searchText).map((item,index) => (
-                    <TouchableHighlight key={index} style={styles.personSearch}
+                    <TouchableHighlight key={index} style={styles.personsearch_touchablehighlight}
                     onPress={() => this.props.addPersontoMap(item)} >
                         <Text key={index} >{item.name.first} {item.name.last}</Text>
                     </TouchableHighlight>
               ))
             }
            </ScrollView>
-
-
-              </View>
+           </View>
         );
 
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        justifyContent: 'flex-end',
-        alignItems: 'center',
-        marginTop: 20
-    },
-    searchText: {
-        height: 40,
-        borderColor: 'gray',
-        borderWidth: 1,
-        alignSelf: 'stretch',
-        backgroundColor: '#d2d7d3',
-        padding: 5,
-        margin: 5
-    },
-    personSearch: {
-        margin: 10,
-        height: 15
-    },
-    scrollview: {
-        height: '20%'
-    }
-
-});
 
 export default PersonSearch;
