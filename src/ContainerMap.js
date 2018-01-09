@@ -4,7 +4,8 @@ import { StyleSheet, Dimensions, View, TextInput } from 'react-native';
 import Map from './Map';
 import PersonSearch from './PersonSearch';
 import { connect } from "react-redux"
-import {styles} from './styles';
+import { styles } from './styles';
+import Toast from 'react-native-simple-toast';
 
 class ContainerMap extends Component {
     constructor(props) {
@@ -21,6 +22,7 @@ class ContainerMap extends Component {
         this.addPersontoMap = this.addPersontoMap.bind(this);
         this.peopleSearch = this.peopleSearch.bind(this);
         this.updateCoords = this.updateCoords.bind(this);
+        // this.requestGeocode = this.requestGeocode.bind(this);
     }
 
     componentWillMount() {
@@ -42,20 +44,49 @@ class ContainerMap extends Component {
         });
     }
 
+    generateURL(coords) {
+        return "https://services.gisgraphy.com/reversegeocoding/search?format=json&lat=" +
+            coords.latitude +
+            "&lng=" + coords.longitude
+    }
+
+    async requestGeocode(params) {
+        const URL = this.generateURL(params);
+
+        const response = await fetch(URL)
+        return await response.json()
+    }
 
     addPersontoMap(item) {
-        this.updateCoords(item)
-        item.geocodeInfo = this.getGeocodeInfo(item);
-        this.setLocation(item.coords.latitude, item.coords.longitude)
+        this.updateCoords(item);
 
-        this.setState({
-            marker: {
-                coords: item.coords,
-                title: item.name.first + ' ' + item.name.last,
-                description: this.email
+        this.requestGeocode(item.coords).
+        then(json => {
+
+            let errormsg = '...try again...[' + item.coords.latitude + ', ' + item.coords.longitude + ']';
+
+            if (json.error) {
+                Toast.show(json.error + errormsg);
+                return
             }
-        })
 
+            if (json.result.length == 0 || !["HOUSE_NUMBER", "STREET"].includes(json.result[0].geocodingLevel)) {
+                Toast.show('Not a legitimate address' + errormsg);
+                return
+            }
+
+            this.setLocation(item.coords.latitude, item.coords.longitude)
+
+            this.setState({
+                marker: {
+                    coords: item.coords,
+                    title: item.name.first + ' ' + item.name.last,
+                    info: item,
+                    geocodeInfo: json.result[0]
+                }
+            })
+        }).
+        catch(error => console.log(error.message))
     }
 
     peopleSearch(searchText) {
@@ -75,16 +106,13 @@ class ContainerMap extends Component {
 
     updateCoords(item) {
         item.coords = {
-            latitude: this.randomCoords(-90, 90, 7),
-            longitude: this.randomCoords(-180, 180, 7)
+            latitude: this.randomCoords(49.3457868, 24.7433195, 7),
+            longitude: this.randomCoords(-124.7844079, -66.9513812, 7)
         }
     }
 
-    getGeocodeInfo(item) {
-        //item.coords
-    }
-
     render() {
+
         return (
             <View style={styles.containermap_container}>
               <Map region={this.state.region} marker={this.state.marker}/>

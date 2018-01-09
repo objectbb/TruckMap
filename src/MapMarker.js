@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, Animated, StyleSheet } from "react-native";
+import { View, Text, Animated, StyleSheet, ScrollView, Dimensions, WebView } from "react-native";
 import Marker from 'react-native-maps';
 import MapView from 'react-native-maps';
+
 
 class MapMarker extends Component {
     render() {
@@ -14,6 +15,7 @@ class MapMarker extends Component {
                 title={marker.title}
                 description={marker.description}
             />
+
         )
     }
 }

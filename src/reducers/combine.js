@@ -5,13 +5,15 @@ import { region } from "./region"
 import { request } from "./request"
 import { people } from "./people"
 import { interests } from "./interests"
+import { error } from "./error"
 
 
 const rootReducer = combineReducers({
     region,
     request,
     people,
-    interests
+    interests,
+    error
 })
 
 let store = createStore(

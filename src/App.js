@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux"
-import { StyleSheet, View} from 'react-native';
-import {styles} from './styles';
+import { StyleSheet, View } from 'react-native';
+import { styles } from './styles';
 
 import {
     loadInterests,
@@ -22,7 +22,7 @@ class App extends Component {
     render() {
         return (
             <View style={styles.app_container}>
-            <ContainerMap />
+            <ContainerMap dispatch={this.dispatch} />
           </View>
         );
     }
