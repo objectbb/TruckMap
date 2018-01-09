@@ -26,7 +26,7 @@ class PersonSearch extends Component {
                 this.props.people(this.state.searchText).map((item,index) => (
                     <TouchableHighlight key={index} style={styles.personsearch_touchablehighlight}
                     onPress={() => this.props.addPersontoMap(item)} >
-                        <Text key={index} >{item.name.first} {item.name.last}</Text>
+                        <Text style={styles.personsearch_searchtext_item} key={index} >{item.name.first} {item.name.last}</Text>
                     </TouchableHighlight>
               ))
             }

@@ -24,27 +24,49 @@ export const styles = StyleSheet.create({
         alignSelf: 'stretch',
         backgroundColor: '#d2d7d3',
         padding: 5,
-        margin: 5
+        margin: 5,
+        opacity: 0.8
+    },
+    personsearch_searchtext_item: {
+        fontWeight: 'bold',
     },
     personsearch_touchablehighlight: {
-        margin: 10,
-        height: 15
+        margin: 2,
+        height: 15,
+        opacity: 0.6,
+        backgroundColor: '#FDE3A7'
     },
     personsearch_scrollview: {
-        height: '20%',
-        alignSelf: 'stretch',
+        height: '10%',
+        alignSelf: 'stretch'
     },
-    marker: {
-        borderWidth: 1,
-        borderColor: '#FFF',
-        width: 40,
-        height: 40,
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: 40
+    mapmarker: {
+        zIndex: 9999999
     },
-    marker_text: {
-        color: '#FFF',
+    mapmarker_callout: {
+        height: 150,
+        borderRadius: 2
+    },
+    mapmarker_geocode_callout: {
+        marginTop: 5
+    },
+    mapmarker_fields_callout: {
         fontWeight: 'bold'
+    },
+    mapmarker_geocode_row_callout: {
+        fontSize: 10,
+    },
+    mapmarker_scrollview_callout: {
+        margin: 2,
+        padding: 2,
+        borderWidth: 0.5,
+        borderColor: '#C0392B',
+        width: '65%',
+        height: 50
+    },
+    mapmarker_header_callout: {
+        fontWeight: 'bold',
+        fontSize: 20,
+        marginBottom: 5
     },
 });

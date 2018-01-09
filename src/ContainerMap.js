@@ -86,7 +86,7 @@ class ContainerMap extends Component {
                 }
             })
         }).
-        catch(error => console.log(error.message))
+        catch(error => Toast.show(error.message))
     }
 
     peopleSearch(searchText) {
