@@ -20,9 +20,16 @@ class MapMarker extends Component {
 
               <MapView.Callout style={styles.mapmarker_callout}>
                   <Text style={styles.mapmarker_header_callout}>{marker.info.name.title} {marker.info.name.first} {marker.info.name.last} </Text>
+
                    <Text><Text style={styles.mapmarker_fields_callout}>dob:</Text> {marker.info.dob} <Text style={styles.mapmarker_fields_callout}>gender:</Text> {marker.info.gender} </Text>
+
                   <Text>{marker.info.email} </Text>
                   <Text>{marker.info.phone}</Text>
+
+                  <Text style={styles.mapmarker_hobby_callout}>
+                  <Text style={styles.mapmarker_fields_callout}>Hobbies:</Text>
+                   <Text> {marker.interests.map((item) => item.hobby).join(', ')}</Text>
+                   </Text>
 
                   <View style={styles.mapmarker_geocode_callout}>
                     <Text style={styles.mapmarker_fields_callout}> Geocode Info </Text>

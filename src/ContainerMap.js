@@ -12,8 +12,6 @@ class ContainerMap extends Component {
         super(props);
 
         this.state = {
-            people: [],
-            interests: [],
             marker: null
         }
 
@@ -22,11 +20,18 @@ class ContainerMap extends Component {
         this.addPersontoMap = this.addPersontoMap.bind(this);
         this.peopleSearch = this.peopleSearch.bind(this);
         this.updateCoords = this.updateCoords.bind(this);
-        // this.requestGeocode = this.requestGeocode.bind(this);
+
     }
 
     componentWillMount() {
         this.setLocation(41.8827779, -87.6849345)
+
+        this.props.people.forEach((item) =>
+            item.interests = item.interest_ids.map(
+                (id) => this.props.interests.find((item) => item.id === id)
+            )
+        )
+
     }
 
     setLocation(latitude, longitude) {
@@ -62,7 +67,7 @@ class ContainerMap extends Component {
 
         let errormsg = ' [' + item.coords.latitude + ', ' + item.coords.longitude + ']...please try again...';
 
-        Toast.show('Validating [' + item.coords.latitude + ', ' + item.coords.longitude + ']...');
+        Toast.show('Validating [' + item.coords.latitude + ', ' + item.coords.longitude + ']...', Toast.SHORT);
         this.requestGeocode(item.coords).
         then(json => {
 
@@ -85,7 +90,8 @@ class ContainerMap extends Component {
                     coords: item.coords,
                     title: item.name.first + ' ' + item.name.last,
                     info: item,
-                    geocodeInfo: json.result[0]
+                    geocodeInfo: json.result[0],
+                    interests: item.interests
                 }
             })
         }).

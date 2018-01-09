@@ -6,9 +6,7 @@ export const interests = (
 ) => {
     switch (action.type) {
     case RETRIEVE_INTERESTS:
-        return {
-            ...state
-        };
+        return action.interests;
     default:
         return state;
     }

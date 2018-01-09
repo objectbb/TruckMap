@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
         marginTop: 20
     },
     personsearch_searchtext: {
-        height: 40,
+        height: 30,
         borderColor: 'gray',
         borderWidth: 1,
         alignSelf: 'stretch',
@@ -37,14 +37,14 @@ export const styles = StyleSheet.create({
         backgroundColor: '#FDE3A7'
     },
     personsearch_scrollview: {
-        height: '10%',
+        height: '8%',
         alignSelf: 'stretch'
     },
     mapmarker: {
         zIndex: 9999999
     },
     mapmarker_callout: {
-        height: 150,
+        height: 170,
         borderRadius: 2
     },
     mapmarker_geocode_callout: {
@@ -52,6 +52,11 @@ export const styles = StyleSheet.create({
     },
     mapmarker_fields_callout: {
         fontWeight: 'bold'
+    },
+    mapmarker_hobby_callout: {
+        width: '65%',
+        fontSize: 10,
+        marginTop: 3
     },
     mapmarker_geocode_row_callout: {
         fontSize: 10,

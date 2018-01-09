@@ -1,5 +1,5 @@
 let people = require("../data/people.json");
-import { interests } from "../data/interests";
+let interests = require("../data/interests.json");
 
 export const REQUEST_POSTS = "REQUEST_POSTS"
 export const RECEIVE_POSTS = "RECEIVE_POSTS"
@@ -41,7 +41,7 @@ export const retrievePeople = people => ({
 })
 
 export const loadInterests = () => dispatch => {
-    dispatch(retrieveInterests(interests()))
+    dispatch(retrieveInterests(interests))
 }
 
 export const loadPeople = () => dispatch => {
