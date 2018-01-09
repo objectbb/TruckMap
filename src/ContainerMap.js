@@ -60,10 +60,11 @@ class ContainerMap extends Component {
     addPersontoMap(item) {
         this.updateCoords(item);
 
+        let errormsg = ' [' + item.coords.latitude + ', ' + item.coords.longitude + ']...please try again...';
+
+        Toast.show('Validating [' + item.coords.latitude + ', ' + item.coords.longitude + ']...');
         this.requestGeocode(item.coords).
         then(json => {
-
-            let errormsg = '...try again...[' + item.coords.latitude + ', ' + item.coords.longitude + ']';
 
             if (json.error) {
                 Toast.show(json.error + errormsg);
@@ -77,6 +78,8 @@ class ContainerMap extends Component {
 
             this.setLocation(item.coords.latitude, item.coords.longitude)
 
+            Toast.show('Successful [' + item.coords.latitude + ', ' + item.coords.longitude + ']...click marker');
+
             this.setState({
                 marker: {
                     coords: item.coords,
@@ -86,7 +89,7 @@ class ContainerMap extends Component {
                 }
             })
         }).
-        catch(error => Toast.show(error.message))
+        catch(error => Toast.show(error.message + errormsg))
     }
 
     peopleSearch(searchText) {
