@@ -10,8 +10,7 @@ Once the user selects an individual, a message will appear indicating the start 
 
 If the location does not meet the criteria or due to the occurence of a server error, a message will appear with the details about the error and the instructions to "try again".
 
-<img width="373" alt="34755661-76e4f168-f593-11e7-81d5-fa891d8685f0" src="https://user-images.githubusercontent.com/835981/34755970-a2843160-f595-11e7-90b9-a3ac8151cde5.png"> <img width="372" alt="screen shot 2018-01-10 at 12 24 14 pm" src="https://user-images.githubusercontent.com/835981/34786255-a2339b08-f601-11e7-83ed-f62080718135.png">
-
+<img width="373" alt="34755661-76e4f168-f593-11e7-81d5-fa891d8685f0" src="https://user-images.githubusercontent.com/835981/34755970-a2843160-f595-11e7-90b9-a3ac8151cde5.png"> 
 
 If successful, a message will appear with instructions to click on the map marker.
 
