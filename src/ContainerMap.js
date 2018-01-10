@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { PropTypes } from "prop-types"
+import { PropTypes } from 'prop-types'
 import { StyleSheet, Dimensions, View, TextInput } from 'react-native';
 import Map from './Map';
 import PersonSearch from './PersonSearch';
-import { connect } from "react-redux"
+import { connect } from 'react-redux'
 import { styles } from './styles';
 import Toast from 'react-native-root-toast';
 

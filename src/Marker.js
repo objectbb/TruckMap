@@ -1,4 +1,4 @@
-import React, { Component, View, Text, Animated, StyleSheet } from "react-native";
+import React, { Component, View, Text, Animated, StyleSheet } from 'react-native';
 import { Marker } from 'react-native-maps';
 import { styles } from './styles';
 
