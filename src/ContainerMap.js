@@ -5,7 +5,8 @@ import Map from './Map';
 import PersonSearch from './PersonSearch';
 import { connect } from "react-redux"
 import { styles } from './styles';
-import Toast from 'react-native-simple-toast';
+import Toast from 'react-native-root-toast';
+
 import {
     values,
     flatten,
@@ -74,28 +75,40 @@ class ContainerMap extends Component {
         return await response.json()
     }
 
+    toastMsg(msg, duration) {
+        let toast = Toast.show(msg, {
+            duration: duration,
+            position: Toast.positions.BOTTOM,
+            shadow: true,
+            animation: true,
+            hideOnPress: true,
+            delay: 0,
+        });
+
+    }
+
     addPersontoMap(item) {
         this.updateCoords(item);
 
         let errormsg = ' [' + item.coords.latitude + ', ' + item.coords.longitude + ']...please try again...';
 
-        Toast.show('Validating [' + item.coords.latitude + ', ' + item.coords.longitude + ']...');
+        this.toastMsg('Validating [' + item.coords.latitude + ', ' + item.coords.longitude + ']...', Toast.durations.SHORT);
         this.requestGeocode(item.coords).
         then(json => {
 
             if (json.error) {
-                Toast.show(json.error + errormsg);
+                this.toastMsg(json.error + errormsg, Toast.durations.LONG);
                 return
             }
 
             if (json.result.length == 0 || !["HOUSE_NUMBER", "STREET"].includes(json.result[0].geocodingLevel)) {
-                Toast.show('Not a legitimate address' + errormsg);
+                this.toastMsg('Not a legitimate address' + errormsg, Toast.durations.LONG);
                 return
             }
 
             this.setLocation(item.coords.latitude, item.coords.longitude)
 
-            Toast.show('Successful [' + item.coords.latitude + ', ' + item.coords.longitude + ']...click marker');
+            this.toastMsg('Successful [' + item.coords.latitude + ', ' + item.coords.longitude + ']...click marker', Toast.durations.LONG);
 
             this.setState({
                 marker: {
@@ -107,7 +120,7 @@ class ContainerMap extends Component {
                 }
             })
         }).
-        catch(error => Toast.show(error.message + errormsg))
+        catch(error => this.toastMsg(error.message + errormsg, Toast.durations.LONG))
     }
 
     peopleSearch(searchText) {
