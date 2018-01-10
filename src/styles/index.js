@@ -34,9 +34,10 @@ export const styles = StyleSheet.create({
     },
     personsearch_searchtext_item_hobby: {
         fontSize: 10,
+        fontWeight: 'bold'
     },
     personsearch_touchablehighlight: {
-        opacity: 0.6,
+        opacity: 0.8,
         backgroundColor: '#FDE3A7',
         marginBottom: 3
     },
@@ -48,7 +49,8 @@ export const styles = StyleSheet.create({
         zIndex: 9999999
     },
     mapmarker_callout: {
-        height: 170,
+        height: 190,
+        flex: 1,
         borderRadius: 2
     },
     mapmarker_geocode_callout: {
@@ -70,12 +72,13 @@ export const styles = StyleSheet.create({
         padding: 2,
         borderWidth: 0.5,
         borderColor: '#C0392B',
-        width: '65%',
-        height: 50
+        height: 70,
+        width: '65%'
     },
+    mapmarker_view_callout: {},
     mapmarker_header_callout: {
         fontWeight: 'bold',
-        fontSize: 20,
+        fontSize: 18,
         marginBottom: 5
     },
 });

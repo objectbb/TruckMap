@@ -48,11 +48,12 @@ class ContainerMap extends Component {
     setLocation(latitude, longitude) {
 
         let { width, height } = Dimensions.get('window');
-        let LATITUDEDELTA = 0.1022
+        let LATITUDEDELTA = 0.1022;
+        let OFFSET = .02;
 
         this.setState({
             region: {
-                latitude: latitude + .02,
+                latitude: latitude + OFFSET,
                 longitude: longitude,
                 latitudeDelta: LATITUDEDELTA,
                 longitudeDelta: LATITUDEDELTA * (width / height),
@@ -78,7 +79,7 @@ class ContainerMap extends Component {
 
         let errormsg = ' [' + item.coords.latitude + ', ' + item.coords.longitude + ']...please try again...';
 
-        Toast.show('Validating [' + item.coords.latitude + ', ' + item.coords.longitude + ']...', Toast.SHORT);
+        Toast.show('Validating [' + item.coords.latitude + ', ' + item.coords.longitude + ']...');
         this.requestGeocode(item.coords).
         then(json => {
 
