@@ -10,7 +10,8 @@ Once the user selects an individual, a message will appear indicating the start 
 
 <img width="374" alt="heidi soap marker" src="https://user-images.githubusercontent.com/835981/34755678-96ca4096-f593-11e7-8a04-251dbe297a72.png">
 
-<img width="375" alt="heidi not legitimate" src="https://user-images.githubusercontent.com/835981/34755661-76e4f168-f593-11e7-81d5-fa891d8685f0.png">
+<img width="373" alt="34755661-76e4f168-f593-11e7-81d5-fa891d8685f0" src="https://user-images.githubusercontent.com/835981/34755970-a2843160-f595-11e7-90b9-a3ac8151cde5.png">
+
 
  Far from perfect, I limited the random location selection to the U.S. because of the high number of false positives when opening the random selection to the world. One approach would be to programmtically automate the search for valid locations-if the attempt fails, then try again until a positive location.  The problem, random numbers are non-deterministic and with the limited number of request/min to the geocoding services, the response time and the end result would result in a poor user experience.
  
