@@ -8,10 +8,10 @@ export default class MapMarker extends Component {
 
         return (
             <Marker coordinate={coordinate}>
-        <View style={styles.marker}>
-          <Text style={styles.marker_text}>{description}</Text>
-        </View>
-      </Marker>
+                <View style={styles.marker}>
+                    <Text style={styles.marker_text}>{description}</Text>
+                </View>
+            </Marker>
         )
     }
 }
