@@ -19,7 +19,7 @@ If the location does not meet the criteria or any other errors, an error message
 
  Far from perfect, I limited the random location selection to the U.S. because of the high number of false positives when opening the random selection to the world. One approach would be to programmtically automate the search for valid locations-if the attempt fails, then try again until a positive location.  The problem, random numbers are non-deterministic and with the limited number of request/min to the geocoding services, the response time and the end result would result in a poor user experience.
  
- Another approach would be to randomly select from a list of max/min latitudes and longitudes, then randomly select latitudes/longitudes between those max/min values.  Each max and min would represent a range from north to south, east to west-representing a geographical square area.  The square area's size will vary based on how accurately those defined geopraphical areas yield quality locations i.e. island-the squares will be smaller in order to capture those addresses along the uneven boundaries.
+ Another approach would be to randomly select from a list of max/min latitudes and longitudes, then randomly select latitudes/longitudes between those max/min values.  Each max and min would represent a range from north to south, east to west-representing a geographical square area.  The square area's size will vary based on how accurately those defined geopraphical areas yield quality locations i.e. island-the squares will be smaller in order to capture those addresses along the uneven boundary.
 
 
 
