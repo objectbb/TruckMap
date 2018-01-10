@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, Animated, StyleSheet, ScrollView, Dimensions, WebView } from "react-native";
+import { View, Text, Animated, StyleSheet, ScrollView, Dimensions, WebView } from 'react-native';
 import Marker from 'react-native-maps';
 import MapView from 'react-native-maps';
 import { styles } from './styles';
+import moment from 'moment'
 
 
 class MapMarker extends Component {
@@ -21,7 +22,7 @@ class MapMarker extends Component {
               <MapView.Callout style={styles.mapmarker_callout}>
                   <Text style={styles.mapmarker_header_callout}>{marker.info.name.title} {marker.info.name.first} {marker.info.name.last} </Text>
 
-                   <Text><Text style={styles.mapmarker_fields_callout}>dob:</Text> {marker.info.dob} <Text style={styles.mapmarker_fields_callout}>gender:</Text> {marker.info.gender} </Text>
+                   <Text><Text style={styles.mapmarker_fields_callout}>dob:</Text> {moment(marker.info.dob,'YYYY-MM-DD').format('MM/DD/YYYY')} <Text style={styles.mapmarker_fields_callout}>gender:</Text> {marker.info.gender} </Text>
 
                   <Text>{marker.info.email} </Text>
                   <Text>{marker.info.phone}</Text>
