@@ -24,7 +24,7 @@ class PersonSearch extends Component {
                 <ScrollView style={styles.personsearch_scrollview}>
                 {
                     this.props.people(this.state.searchText).map((item,index) => (
-                        <TouchableHighlight key={index} style={styles.personsearch_touchablehighlight}
+                        <TouchableHighlight key={index} underlayColor='beige' style={styles.personsearch_touchablehighlight}
                         onPress={() => this.props.addPersontoMap(item)} >
                             <View key={index} style={styles.personsearch_searchtext_item}>
                                 <View>
