@@ -6,7 +6,7 @@ The combo box search feature allows for the search of individuals by first and l
 
 Once the user selects an individual, a message will appear indicating the start of location selection and validation processes. For the validation, I only accepted those locations with the geocoding level of HOME_ADDRESS or STREET. 
 
-<img width="366" alt="hiedi soap successfull" src="https://user-images.githubusercontent.com/835981/34755636-449a5f04-f593-11e7-8e08-5321c92cf930.png">
+<img width="374" alt="screen shot 2018-01-10 at 12 19 55 pm" src="https://user-images.githubusercontent.com/835981/34786001-bf8b6df8-f600-11e7-8c87-57d9ce266296.png">
 
 If the location does not meet the criteria or due to the occurence of a server error, a message will appear with the details about the error and the instructions to "try again".
 
