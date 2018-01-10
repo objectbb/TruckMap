@@ -16,21 +16,30 @@ class PersonSearch extends Component {
     render() {
         return (
             <View style={styles.personsearch_container}>
-            < TextInput style = {styles.personsearch_searchtext}
-                onChangeText = {
-                (text) => this.changeSearchText(text) }
-                value = { this.state.searchText }
-            />
-            <ScrollView style={styles.personsearch_scrollview}>
-            {
-                this.props.people(this.state.searchText).map((item,index) => (
-                    <TouchableHighlight key={index} style={styles.personsearch_touchablehighlight}
-                    onPress={() => this.props.addPersontoMap(item)} >
-                        <Text style={styles.personsearch_searchtext_item} key={index} >{item.name.first} {item.name.last}</Text>
-                    </TouchableHighlight>
-              ))
-            }
-           </ScrollView>
+                <TextInput style = {styles.personsearch_searchtext}
+                    onChangeText = {
+                    (text) => this.changeSearchText(text) }
+                    value = { this.state.searchText }
+                />
+                <ScrollView style={styles.personsearch_scrollview}>
+                {
+                    this.props.people(this.state.searchText).map((item,index) => (
+                        <TouchableHighlight key={index} style={styles.personsearch_touchablehighlight}
+                        onPress={() => this.props.addPersontoMap(item)} >
+                            <View key={index} style={styles.personsearch_searchtext_item}>
+                                <View>
+                                    <Text>
+                                        {item.name.first} {item.name.last}
+                                    </Text>
+                                    <Text style={styles.personsearch_searchtext_item_hobby}>
+                                        {item.interests.map((item) => item.hobby).join(', ')}
+                                    </Text>
+                                </View>
+                            </View>
+                        </TouchableHighlight>
+                  ))
+                }
+               </ScrollView>
            </View>
         );
 

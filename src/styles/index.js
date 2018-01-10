@@ -28,16 +28,20 @@ export const styles = StyleSheet.create({
         opacity: 0.8
     },
     personsearch_searchtext_item: {
-        fontWeight: 'bold',
+        height: 45,
+        padding: 2,
+        marginBottom: 3
+    },
+    personsearch_searchtext_item_hobby: {
+        fontSize: 10,
     },
     personsearch_touchablehighlight: {
-        margin: 2,
-        height: 15,
         opacity: 0.6,
-        backgroundColor: '#FDE3A7'
+        backgroundColor: '#FDE3A7',
+        marginBottom: 3
     },
     personsearch_scrollview: {
-        height: '8%',
+        height: '20%',
         alignSelf: 'stretch'
     },
     mapmarker: {

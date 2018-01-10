@@ -6,6 +6,14 @@ import PersonSearch from './PersonSearch';
 import { connect } from "react-redux"
 import { styles } from './styles';
 import Toast from 'react-native-simple-toast';
+import {
+    values,
+    flatten,
+    intersection,
+    words,
+    some,
+    includes
+} from "lodash"
 
 class ContainerMap extends Component {
     constructor(props) {
@@ -20,18 +28,21 @@ class ContainerMap extends Component {
         this.addPersontoMap = this.addPersontoMap.bind(this);
         this.peopleSearch = this.peopleSearch.bind(this);
         this.updateCoords = this.updateCoords.bind(this);
-
+        this.prepData = this.prepData.bind(this);
     }
 
     componentWillMount() {
-        this.setLocation(41.8827779, -87.6849345)
+        this.setLocation(41.8827779, -87.6849345);
+        this.prepData();
+    }
 
-        this.props.people.forEach((item) =>
+    prepData() {
+        this.props.people.forEach((item) => {
             item.interests = item.interest_ids.map(
                 (id) => this.props.interests.find((item) => item.id === id)
-            )
-        )
-
+            );
+            item.keywords = [item.name.first, item.name.last].concat(values(item.interests.map((item) => item.hobby.toLowerCase())))
+        })
     }
 
     setLocation(latitude, longitude) {
@@ -41,7 +52,7 @@ class ContainerMap extends Component {
 
         this.setState({
             region: {
-                latitude: latitude,
+                latitude: latitude + .02,
                 longitude: longitude,
                 latitudeDelta: LATITUDEDELTA,
                 longitudeDelta: LATITUDEDELTA * (width / height),
@@ -99,14 +110,16 @@ class ContainerMap extends Component {
     }
 
     peopleSearch(searchText) {
-        let lsearchText = searchText.toLowerCase();
 
+        let lsearchText = words(searchText.toLowerCase(), /[^ $]+/g)
         return (searchText) ?
             this.props.people.filter(
-                (item) => {
-                    return item.name.first.includes(lsearchText) || item.name.last.includes(lsearchText)
-                }
-            ) : []
+                (item) =>
+                (lsearchText.filter((phrase) =>
+                    (item.keywords.filter((word) => word.indexOf(phrase) > -1)).length > 0
+                )).length >= lsearchText.length
+            )
+            : []
     }
 
     randomCoords(to, from, fixed) {
