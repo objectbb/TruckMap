@@ -10,12 +10,12 @@ Once the user selects an individual, a message will appear indicating the start 
 
 If the location does not meet the criteria or due to the occurence of a server error, a message will appear with the details about the error and the instructions to "try again".
 
-<img width="373" alt="34755661-76e4f168-f593-11e7-81d5-fa891d8685f0" src="https://user-images.githubusercontent.com/835981/34755970-a2843160-f595-11e7-90b9-a3ac8151cde5.png">
+<img width="373" alt="34755661-76e4f168-f593-11e7-81d5-fa891d8685f0" src="https://user-images.githubusercontent.com/835981/34755970-a2843160-f595-11e7-90b9-a3ac8151cde5.png"> <img width="372" alt="screen shot 2018-01-10 at 12 24 14 pm" src="https://user-images.githubusercontent.com/835981/34786255-a2339b08-f601-11e7-83ed-f62080718135.png">
+
 
 If successful, a message will appear with instructions to click on the map marker.
 
-<img width="374" alt="heidi soap marker" src="https://user-images.githubusercontent.com/835981/34755678-96ca4096-f593-11e7-8a04-251dbe297a72.png">
-
+<img width="374" alt="heidi soap marker" src="https://user-images.githubusercontent.com/835981/34755678-96ca4096-f593-11e7-8a04-251dbe297a72.png"> 
 
 Far from perfect, I limited the random location selection to the U.S. because of the high number of false positives (geocoding level NOT HOME_ADDRESS or STREET) when opening the random selection to the world. One approach would be to programmtically automate the search for valid locations-if the attempt fails, then try again until a valid location is generated.  However, the problem, random number generator is non-deterministic and with limited number of request/min to the geocoding service, the response time and the end result would result in a poor user experience.
  
