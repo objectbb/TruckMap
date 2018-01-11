@@ -20,7 +20,7 @@ Far from perfect, I limited the random location selection to the U.S. because of
  
 Another approach would be to randomly select from a list of max/min latitudes and longitudes, then randomly select latitudes/longitudes between those max/min values.  Each max and min would represent a range from north to south, east to west-representing a geographical square area.  The square area's size will vary based on how accurately those defined geopraphical areas yield quality addresses i.e. an island-the squares will be smaller in order to capture more of the landmass (more addresses), especailly along the uneven boundary between land and water. 
 
-Althought labor and computational intensive compared to other options, the randomly selected locations are of higher quality, resulting in decrease errors and an increase in usage which adds up to improve user experience.
+Althought labor and computational intensive compared to other options, the randomly selected locations are of higher quality, resulting in decrease number of errors and an increase in usage which adds up to improve user experience.
 
 
 
