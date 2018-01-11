@@ -1,4 +1,4 @@
-Based on the requirements, I developed a mobile app that randomly assigns a location to selected individuals.
+Based on the requirements, I developed a mobile app that randomly assigns a location to a selected individual.
 
 <img width="374" alt="heidi soap search" src="https://user-images.githubusercontent.com/835981/34755665-88318594-f593-11e7-9c31-62faf89b9bdc.png">
 
