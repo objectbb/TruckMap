@@ -27,7 +27,7 @@ class ContainerMap extends Component {
         this.setLocation = this.setLocation.bind(this);
         this.randomCoords = this.randomCoords.bind(this);
         this.addPersontoMap = this.addPersontoMap.bind(this);
-        this.peopleSearch = this.peopleSearch.bind(this);
+        this.searchPeople = this.searchPeople.bind(this);
         this.updateCoords = this.updateCoords.bind(this);
         this.prepData = this.prepData.bind(this);
     }
@@ -123,7 +123,7 @@ class ContainerMap extends Component {
         catch(error => this.toastMsg(error.message + errormsg, Toast.durations.LONG))
     }
 
-    peopleSearch(searchText) {
+    searchPeople(searchText) {
 
         let lsearchText = words(searchText.toLowerCase(), /[^ $]+/g)
         let length = lsearchText.length
@@ -154,7 +154,7 @@ class ContainerMap extends Component {
         return (
             <View style={styles.containermap_container}>
               <Map region={this.state.region} marker={this.state.marker}/>
-               <PersonSearch people={this.peopleSearch} addPersontoMap={this.addPersontoMap} />
+               <PersonSearch people={this.searchPeople} addPersontoMap={this.addPersontoMap} />
             </View>
         );
     }
