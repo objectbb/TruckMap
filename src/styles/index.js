@@ -49,7 +49,7 @@ export const styles = StyleSheet.create({
         zIndex: 9999999
     },
     mapmarker_callout: {
-        height: 190,
+        height: 200,
         flex: 1,
         borderRadius: 2
     },

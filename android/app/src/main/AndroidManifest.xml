@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.truckmap" android:versionCode="1" android:versionName="1.0">
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="22" />
+    <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="25" />
     <application android:name=".MainApplication" android:allowBackup="true" android:label="@string/app_name" android:icon="@mipmap/ic_launcher" android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" android:label="@string/app_name" android:configChanges="keyboard|keyboardHidden|orientation|screenSize" android:windowSoftInputMode="adjustResize">
             <intent-filter>
@@ -10,8 +10,6 @@
             </intent-filter>
         </activity>
         <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
-        <meta-data
-      android:name="com.google.android.geo.API_KEY"
-      android:value="AIzaSyDIBlQCFVheOPibWhl9-pOX6PWTNPuf8NQ"/>
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyBqK4f8zbMrK4K5cxWb8_10Zkbk7LHMrKE" />
     </application>
 </manifest>

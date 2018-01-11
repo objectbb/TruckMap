@@ -126,12 +126,14 @@ class ContainerMap extends Component {
     peopleSearch(searchText) {
 
         let lsearchText = words(searchText.toLowerCase(), /[^ $]+/g)
+        let length = lsearchText.length
+
         return (searchText) ?
             this.props.people.filter(
                 (item) =>
                 (lsearchText.filter((phrase) =>
                     (item.keywords.filter((word) => word.indexOf(phrase) > -1)).length > 0
-                )).length >= lsearchText.length
+                )).length == length
             )
             : []
     }

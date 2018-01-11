@@ -34,7 +34,7 @@ class MapMarker extends Component {
 
                   <View style={styles.mapmarker_geocode_callout}>
                     <Text style={styles.mapmarker_fields_callout}> Geocode Info </Text>
-                    <ScrollView style={styles.mapmarker_scrollview_callout}>
+                    <ScrollView scrollEnabled={true} style={styles.mapmarker_scrollview_callout}>
                     {Object.keys(marker.geocodeInfo).map(function(keyName, keyIndex) {
                         return (<Text key={keyIndex} style={[styles.mapmarker_geocode_row_callout,{backgroundColor: (keyIndex % 2 == 0) ? '#DBEED1' : '#fff' } ]}>
                         <Text style={styles.mapmarker_fields_callout}> {keyName}:</Text> {marker.geocodeInfo[keyName] }
